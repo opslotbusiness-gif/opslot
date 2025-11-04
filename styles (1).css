@@ -1,0 +1,474 @@
+/* -----------------------------------------------------
+   Alap színek és változók
+----------------------------------------------------- */
+:root {
+  --bg: #0b0b0e;
+  --card: #101218;
+  --text: #e6e6e6;
+  --muted: #b7b7b7;
+  --gold: #d4af37;
+  --gold-2: #f7d774;
+  --link: #f0c85b;
+}
+
+/* -----------------------------------------------------
+   Alap beállítások
+----------------------------------------------------- */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  color: var(--text);
+  line-height: 1.5;
+  background:
+    radial-gradient(1200px 800px at 15% 0%, rgba(212, 175, 55, 0.08), transparent 60%),
+    radial-gradient(800px 600px at 85% 10%, rgba(247, 215, 116, 0.07), transparent 60%),
+    var(--bg);
+}
+
+/* -----------------------------------------------------
+   Oldal szerkezet
+----------------------------------------------------- */
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* -----------------------------------------------------
+   Fejléc (Header)
+----------------------------------------------------- */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+/* Márka (bal felső sarok) */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.brand .logo-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold-2));
+  box-shadow: 0 0 16px rgba(247, 215, 116, 0.6);
+}
+
+/* Kereső és Discord gomb */
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.search {
+  position: relative;
+}
+
+.search input {
+  background: #0d0f15;
+  color: var(--text);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 12px;
+  padding: 10px 12px 10px 36px;
+  min-width: 260px;
+  outline: none;
+}
+
+.search::before {
+  content: "🔍";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.7;
+  font-size: 14px;
+}
+
+/* -----------------------------------------------------
+   Discord gomb
+----------------------------------------------------- */
+/* -----------------------------------------------------
+   Lábléc (Discord gomb + jogi szöveg)
+----------------------------------------------------- */
+footer {
+  text-align: center;
+  margin-top: 60px;
+  padding: 30px 0 20px;
+  border-top: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+/* Discord gomb */
+.discord-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-2));
+  color: #0b0b0e;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 12px 22px;
+  border-radius: 12px;
+  border: 1px solid rgba(247, 215, 116, 0.5);
+  box-shadow: 0 0 12px rgba(247, 215, 116, 0.2);
+  transition: all 0.25s ease;
+}
+
+.discord-btn:hover {
+  background: linear-gradient(135deg, var(--gold-2), #fff0b3);
+  box-shadow: 0 0 20px rgba(247, 215, 116, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Discord ikon a gombban */
+.discord-icon {
+  width: 22px;
+  height: 22px;
+  color: #0b0b0e;
+  transition: transform 0.25s ease;
+}
+
+.discord-btn:hover .discord-icon {
+  transform: rotate(-5deg) scale(1.1);
+}
+
+/* Jogi szöveg */
+.footer-text {
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.3px;
+}
+
+
+/* -----------------------------------------------------
+   Kártyarács (Casino grid)
+----------------------------------------------------- */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+}
+
+/* -----------------------------------------------------
+   Kártya (Casino card)
+----------------------------------------------------- */
+/* -----------------------------------------------------
+   Kártya (kompaktabb méret)
+----------------------------------------------------- */
+.card {
+  --w: 260px;
+  flex: 1 1 var(--w);
+  max-width: 300px;
+  min-width: 220px;
+  height: 340px; /* kisebb magasság */
+  background: linear-gradient(180deg, rgba(212,175,55,.09), transparent 130%), var(--card);
+  color: var(--text);
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  border: 1px solid rgba(212,175,55,.55);
+  box-shadow:
+    0 0 0 1px rgba(247,215,116,.18) inset,
+    0 6px 14px rgba(0,0,0,.45),
+    0 0 18px rgba(247,215,116,.12);
+  transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card:hover,
+.card:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--gold-2);
+  box-shadow:
+    0 0 0 1px rgba(247,215,116,.32) inset,
+    0 10px 22px rgba(0,0,0,.6),
+    0 0 28px rgba(247,215,116,.22);
+  outline: none;
+}
+
+/* --- Kép (kisebb, de arányos) --- */
+.media {
+  width: 100%;
+  height: 50%;
+  background: #0b0c10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(212,175,55,.25);
+}
+.media img {
+  max-width: 88%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 8px rgba(0,0,0,.45));
+}
+
+/* --- Tartalom --- */
+.content {
+  flex: 1 0 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 14px;
+  box-sizing: border-box;
+}
+.title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gold-2);
+  text-shadow: 0 0 10px rgba(247,215,116,.25);
+  margin-bottom: 6px;
+}
+.desc {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 0;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+
+/* Mobilon növekedjen, ha kell */
+@media (max-width: 600px) {
+  .card {
+    height: auto;
+    min-height: 300px;
+  }
+}
+
+
+
+/* -----------------------------------------------------
+   Reszponzív beállítások
+----------------------------------------------------- */
+@media (max-width: 860px) {
+  .wrapper {
+    padding: 16px;
+  }
+
+  .search input {
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 520px) {
+  header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .actions {
+    width: 100%;
+  }
+
+  .search input {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .card {
+    min-width: 90%;
+  }
+}
+
+/* -----------------------------------------------------
+   Mozgáscsökkentés (hozzáférhetőség)
+----------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}
+
+/* ===== Kártya: egységes magasság + középre igazítás (override) ===== */
+.card{
+  display: flex !important;
+  flex-direction: column !important;
+  height: 420px;                /* egységes magasság */
+}
+
+/* Kép terület felül, arányosan */
+.card .media{
+  flex: 1 0 55%;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #0b0c10;
+  border-bottom: 1px solid rgba(212,175,55,.25);
+}
+.card .media img{
+  max-width: 92%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 10px rgba(0,0,0,.45));
+}
+
+/* Név + leírás közepe (vízszintesen és függőlegesen is) */
+.card .content{
+  flex: 1 0 45%;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  padding: 16px;
+  box-sizing: border-box;
+}
+.card .content .title{
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gold-2);
+  text-shadow: 0 0 10px rgba(247,215,116,.25);
+  text-align: center !important;
+}
+.card .content .desc{
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre-line;      /* Sheets Alt+Enter sortörés megmarad */
+  overflow-wrap: anywhere;
+  text-align: center !important;
+}
+
+/* Mobilon engedjük nőni a kártyát, ha hosszabb a szöveg */
+@media (max-width: 600px){
+  .card{ height: auto; min-height: 380px; }
+}
+
+/* Keresés: biztos elrejtés */
+.card.hidden { display: none !important; }
+
+/* ===== Kötelező kapu (age/geo) ===== */
+body.modal-open { overflow: hidden; }
+
+.gate-overlay{
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(1200px 800px at 15% 0%, rgba(212, 175, 55, 0.10), transparent 60%),
+    radial-gradient(800px 600px at 85% 10%, rgba(247, 215, 116, 0.08), transparent 60%),
+    var(--bg);
+}
+
+.gate-window{
+  width: min(560px, 92vw);
+  background: linear-gradient(180deg, rgba(212,175,55,.10), transparent 140%), var(--card);
+  border: 1px solid rgba(212,175,55,.55);
+  box-shadow:
+    0 0 0 1px rgba(247,215,116,.18) inset,
+    0 18px 32px rgba(0,0,0,.55),
+    0 0 28px rgba(247,215,116,.20);
+  border-radius: 16px;
+  padding: 22px 22px 18px;
+}
+
+.gate-window h2{
+  margin: 0 0 8px 0;
+  text-align: center;
+  font-size: 22px;
+  letter-spacing: .4px;
+  color: var(--gold-2);
+  text-shadow: 0 0 12px rgba(247,215,116,.25);
+}
+
+.gate-text{
+  margin: 8px auto 14px;
+  text-align: center;              /* hosszú szöveg középre */
+  color: var(--muted);
+  max-width: 46ch;
+}
+
+.gate-check{
+  display: block;                  /* egymás alatt legyenek */
+  margin: 10px 0;
+  padding: 10px 12px;
+  border: 1px solid rgba(212,175,55,.28);
+  border-radius: 10px;
+  background: #0d0f15;
+}
+
+.gate-check input{
+  vertical-align: middle;
+  transform: translateY(-1px);
+  margin-right: 10px;
+}
+
+.gate-check span{
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.gate-actions{
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.btn{
+  appearance: none;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-weight: 700;
+  letter-spacing: .2px;
+  cursor: pointer;
+}
+
+.btn-exit{
+  background: #151822;
+  color: var(--text);
+  border-color: rgba(212,175,55,.35);
+}
+
+.btn-exit:hover{ filter: brightness(1.05); }
+
+.btn-continue{
+  background: linear-gradient(135deg, var(--gold), var(--gold-2));
+  color: #0b0b0e;
+  border-color: rgba(247,215,116,.55);
+  box-shadow: 0 0 12px rgba(247,215,116,.25);
+}
+
+.btn-continue:disabled{
+  opacity: .5;
+  cursor: not-allowed;
+  filter: grayscale(100%);
+  box-shadow: none;
+}
+
+@media (max-width: 520px){
+  .gate-window{ padding: 18px 16px 14px; }
+}
+
+
